@@ -2,8 +2,7 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license) {
-    var licenseBadge = `https://img.shields.io/badge/license-${license}-blue`;
-    return licenseBadge;
+    return `https://img.shields.io/badge/license-${license}-blue`;
   } else {
     return;
   }
@@ -13,7 +12,7 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license) {
-    var licenseLink = `https://choosealicense.com/licenses/${license}`
+    return `https://choosealicense.com/licenses/${license}`;
   } else {
     return;
   }
@@ -23,8 +22,11 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license) {
-    `![License Badge](${renderLicenseBadge(data.license)});
-    This application is created using the following license (click to learn more): [${license}](${renderLicenseLink(license)}).`
+    return `![License Badge](${renderLicenseBadge(license)})
+    
+    This application is created using the following license (click to learn more): [${license}](${renderLicenseLink(license)}).`;
+  } else {
+    return;
   }
 }
 
@@ -33,7 +35,7 @@ function generateMarkdown(data) {
   return `# ${data.title}
   
   ## Licensing Badge
-  ![License Badge](${renderLicenseBadge(data.license)});
+  ![License Badge](${renderLicenseBadge(data.license)})
 
   ## Table of Contents
   * [Description](#description)
@@ -57,13 +59,13 @@ function generateMarkdown(data) {
   ${data.contribution}
 
   ## Tests
-  ${data.testInstructions}
+  ${data.test}
 
   ## License
-  ${renderLicenseSection(data.license)};
+  ${renderLicenseSection(data.license)}
 
   ## Questions
-  Please visit my GitHub profile at [${data.githubUsename}](https://github.com/${data.githubUsename}). If you have additional questions, please email me at ${data.email}.`;
+  Please visit my GitHub profile at [${data.github}](https://github.com/${data.github}). If you have additional questions, please email me at ${data.email}.`;
 }
 
 module.exports = generateMarkdown;

@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('/Users/michaelshaari/Desktop/Bootcamp/module-9-challenge/utils/generateMarkdown.js'); //is this the right path
 const fs = require('fs');
 
+//NEED TO MAKE QUESITONS REQUIRED
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -13,22 +14,27 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Please describe your project.',
+        message: 'Please describe your application.',
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'How do we install the application?',
     },
     {
         type: 'input',
         name: 'usage',
-        message: 'Please enter usage information for your project.',
+        message: 'Please enter usage information for your application.',
     },
     {
         type: 'input',
         name: 'contribution',
-        message: 'Please enter contribution guidelines for your project.',
+        message: 'What are the contribution guidelines for your application?',
     },
     {
         type: 'input',
-        name: 'testInstructions',
-        message: 'Please enter test instructions for your project.',
+        name: 'test',
+        message: 'What are the test instructions for your application?',
     },
     {
         type: 'checkbox',
@@ -38,7 +44,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'githubUsername',
+        name: 'github',
         message: 'What is your GitHub username?',
     },
     {
@@ -50,7 +56,8 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err ? console.error(err) : console.log('Success!'));
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log('Success!'));
 }
 
 // TODO: Create a function to initialize app
