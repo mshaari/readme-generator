@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+//why does this link not work??? below
 const generateMarkdown = require('/Users/michaelshaari/Desktop/Bootcamp/module-9-challenge/utils/generateMarkdown.js'); //is this the right path
 const fs = require('fs');
 
@@ -10,47 +11,120 @@ const questions = [
         type: 'input',
         name: 'title',
         message: 'What is the title of your project?',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter a title to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'description',
         message: 'Please describe your application.',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter a description to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'installation',
         message: 'How do we install the application?',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter installation instructions to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'usage',
         message: 'Please enter usage information for your application.',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter usage information to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'contribution',
         message: 'What are the contribution guidelines for your application?',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter contribution guidelines to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'test',
         message: 'What are the test instructions for your application?',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter test instructions to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'checkbox',
-        choices: ['agpl-3.0', 'gpl-3.0', 'lgpl-3.0', 'mpl-2.0', 'apache-2.0', 'mit', 'bsl-1.0', 'unlicense'],
+        choices: ['agpl-3.0', 'gpl-3.0', 'lgpl-3.0', 'mpl-2.0', 'apache-2.0', 'mit', 'bsl-1.0', 'unlicense', 'no licencse'],
         name: 'license',
-        message: 'Please select your license.',
+        message: 'Please select your license (select one).',
+        // how to get this to validate at least one license
+        validate: input => {
+            if (input.length===0 | input.length > 1) {
+                console.log('You must choose only one license (no license is an option)!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'github',
         message: 'What is your GitHub username?',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter a GitHub username to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     },
     {
         type: 'input',
         name: 'email',
         message: 'What is your email?',
+        validate: input => {
+            if (input==="") {
+                console.log('You need to enter an email to continue!');
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 ];
 
