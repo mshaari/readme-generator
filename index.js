@@ -1,4 +1,4 @@
-//Packages needed for the application to run
+// Elements (packages, etc.) needed for the application to run
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require('fs');
@@ -10,7 +10,7 @@ const questions = [
         type: 'input',
         name: 'title',
         message: 'What is the title of your project?',
-        //Validate input to make sure a title is entered (same for all following prompts)
+        // Validate input to make sure a title is entered (same for all following prompts)
         validate: input => {
             if (input==="") {
                 console.log('You need to enter a title to continue!');
