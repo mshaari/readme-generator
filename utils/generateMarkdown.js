@@ -1,11 +1,12 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
 
-  //We need to convert the licenses into license strings that can be used to make banners
+  // Convert the licenses into license strings that can be used to make banners (cannot have dashes, so "%20" is used in URLs to add a space in)
 
+  // Declare a special variable for the licenseBadgeCode used in the URL for the license badge
   var licenseBadgeCode;
   
+  // Convert the license input by users into the text used on the license
   if (license === 'agpl-3.0') {
     licenseBadgeCode = 'agpl%20version%203.0';
   } else if (license === 'gpl-3.0') {
@@ -26,11 +27,11 @@ function renderLicenseBadge(license) {
     licenseBadgeCode = 'no%20license';
   }
 
+  // Return a URL with the license badge for the selected license (if they have no license, it makes clear that there is no license)
   return `![License Badge](https://img.shields.io/badge/license-${licenseBadgeCode}-blue)`;
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// A function that returns the license link to learn more about the license
 function renderLicenseLink(license) {
   if (license === 'no license') {
     return 'https://choosealicense.com/no-permission';
@@ -39,8 +40,7 @@ function renderLicenseLink(license) {
   } 
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Function that returns the license section of README
 function renderLicenseSection(license) {
   if (license === 'no license') {
     return `This application has [no license](${renderLicenseLink(license)}).`;
@@ -49,7 +49,7 @@ function renderLicenseSection(license) {
   } 
 }
 
-// TODO: Create a function to generate markdown for README
+// Function to generate markdown for README. It takes in the data from index.js and creates a README with proper structure
 function generateMarkdown(data) {
   return `# ${data.title}
   
