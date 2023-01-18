@@ -1,10 +1,9 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-//why does this link not work??? below
-const generateMarkdown = require('/Users/michaelshaari/Desktop/Bootcamp/module-9-challenge/utils/generateMarkdown.js'); //is this the right path
+const generateMarkdown = require('./utils/generateMarkdown');
 const fs = require('fs');
 
-//NEED TO MAKE QUESITONS REQUIRED
+
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -86,14 +85,13 @@ const questions = [
         }
     },
     {
-        type: 'checkbox',
-        choices: ['agpl-3.0', 'gpl-3.0', 'lgpl-3.0', 'mpl-2.0', 'apache-2.0', 'mit', 'bsl-1.0', 'unlicense', 'no licencse'],
+        type: 'list',
+        choices: ['agpl-3.0', 'gpl-3.0', 'lgpl-3.0', 'mpl-2.0', 'apache-2.0', 'mit', 'bsl-1.0', 'unlicense', 'no license'],
         name: 'license',
         message: 'Please select your license (select one).',
-        // how to get this to validate at least one license
         validate: input => {
-            if (input.length===0 | input.length > 1) {
-                console.log('You must choose only one license (no license is an option)!');
+            if (input==="") {
+                console.log('You must choose a license to continue (no license is an option to select).');
                 return false;
             } else {
                 return true;
